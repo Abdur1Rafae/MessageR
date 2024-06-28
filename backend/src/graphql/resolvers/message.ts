@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client"
 import { GraphQlContext, MessagePopulated, MessageSentSubsPayload, SendMessageArgs } from "../../utils/type"
-import { GraphQLError, subscribe } from "graphql"
+import { GraphQLError } from "graphql"
 import { withFilter } from "graphql-subscriptions"
 import { userIsConversationParticipant } from "../../utils/functions"
 import { conversationPopulated } from "./conversation"
@@ -45,6 +45,8 @@ const resolvers = {
                         createdAt: "desc"
                     }
                 })
+
+                console.log(messages)
 
                 return messages
             } catch(err: any) {
